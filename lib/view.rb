@@ -24,4 +24,34 @@ class View
 		puts "------------- "
 		puts ""
 	end
+
+	def delete_gossips(gossips)
+		i = 0
+		
+		puts ""
+		puts "------------- "
+		puts ""
+		
+		gossips.each do |gossip|
+			i += 1
+			puts "#gossip #{i} >> " + gossip.author + " : " + gossip.content 
+			puts ""
+		end
+		
+		puts ""
+		puts "------------- "
+		puts ""
+		
+		puts "Donne-moi le numéro du gossip à supprimer"
+		puts ""
+		print "> "
+		
+		num = gets.chomp.to_i 
+		num -= 1
+		gossips.delete_at(num)
+		
+		return gossips
+
+	end
+
 end

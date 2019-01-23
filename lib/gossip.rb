@@ -1,4 +1,6 @@
-Èclass Gossip
+#require 'csv'
+
+class Gossip
 	attr_reader :author, :content
 
 	def initialize(author, content)
@@ -7,8 +9,8 @@
 	end 
 
 	def save
-		CSV.open("db/gossip.csv", "a+") do |csv|
-			csv << [@author, @content]
+		CSV.open("db/gossip.csv", "a+") do |row|
+			row << [@author, @content]
 		end
 	end
 
@@ -21,4 +23,10 @@
 		return all_gossips
 	end
 
+	def self.delete
+		CSV.open("db/gossip.csv", "w") {|csv| csv.truncate(0)}
+	end
+
 end
+
+#Gossip.delete

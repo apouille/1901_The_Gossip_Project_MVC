@@ -18,4 +18,15 @@ class Controller
 		all_gossips = Gossip.all
 		@view.index_gossips(all_gossips)
 	end
+
+	def delete_gossip
+		all_gossips = Gossip.all
+		Gossip.delete
+		params  = @view.delete_gossips(all_gossips)
+		params.each do |param|
+			param.save	
+		end
+		
+	end
+
 end
